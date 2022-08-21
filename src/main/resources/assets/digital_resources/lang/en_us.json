@@ -1,0 +1,23 @@
+{
+  "item.digital_resources.empty_card": "Null Chipset",
+  "item.digital_resources.bronze_card": "<Bronze> Chipset",
+  "item.digital_resources.copper_card": "<Copper> Chipset",
+  "item.digital_resources.gold_card": "<Gold> Chipset",
+  "item.digital_resources.iron_card": "<Iron> Chipset",
+  "item.digital_resources.lead_card": "<Lead> Chipset",
+  "item.digital_resources.nickel_card": "<Nickel> Chipset",
+  "item.digital_resources.osmium_card": "<Osmium> Chipset",
+  "item.digital_resources.platinum_card": "<Platinum> Chipset",
+  "item.digital_resources.silver_card": "<Silver> Chipset",
+  "item.digital_resources.tin_card": "<Tin> Chipset",
+  "item.digital_resources.uranium_card": "<Uranium> Chipset",
+
+  "item.digital_resources.empty_upgrade": "Null Upgrade",
+  "item.digital_resources.speed_upgrade": "{Speed} Upgrade",
+  "item.digital_resources.quantity_upgrade": "{Quantity} Upgrade",
+
+
+  "block.digital_resources.simulator_block": "Resource Simulator",
+
+  "itemGroup.digital_resources": "Digital Resources"
+}

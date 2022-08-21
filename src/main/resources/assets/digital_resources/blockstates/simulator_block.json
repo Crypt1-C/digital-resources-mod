@@ -1,0 +1,5 @@
+{
+  "variants": {
+    "": {"model": "digital_resources:block/simulator_block"}
+  }
+}
