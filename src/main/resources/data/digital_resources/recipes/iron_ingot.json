@@ -1,5 +1,5 @@
 {
-  "type": "digital_resources:digital_simulation",
+  "type": "digital_resources:digital_simulating",
   "ingredients": [
     {
       "item": "digital_resources:iron_card"

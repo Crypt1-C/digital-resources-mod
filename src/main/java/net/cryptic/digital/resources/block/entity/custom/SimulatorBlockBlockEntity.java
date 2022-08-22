@@ -145,7 +145,7 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
-            inventory.setItem(i, entity.itemHandler.getStackInSlot(0));
+            inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
 
         Optional<SimulatorBlockRecipe> match = level.getRecipeManager().getRecipeFor(SimulatorBlockRecipe.Type.INSTANCE, inventory, level);
