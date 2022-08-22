@@ -1,0 +1,11 @@
+{
+  "type": "digital_resources:digital_simulation",
+  "ingredients": [
+    {
+      "item": "digital_resources:iron_card"
+    }
+  ],
+  "output": {
+    "item": "minecraft:iron_ingot"
+  }
+}

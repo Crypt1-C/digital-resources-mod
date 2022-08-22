@@ -2,9 +2,9 @@
 	"credit": "Made with Blockbench",
 	"textures": {
 		"0": "digital_resources:block/machine_inside",
-		"1": "digital_resources:block/texture",
+		"1": "digital_resources:block/outline",
 		"2": "digital_resources:block/machine_center",
-		"particle": "digital_resources:block/machine_inside"
+		"particle": "digital_resources:block/outline"
 	},
 	"elements": [
 		{
@@ -233,16 +233,6 @@
 			"rotation": [0, 45, 0],
 			"scale": [0.3, 0.3, 0.3]
 		},
-		"firstperson_righthand": {
-			"rotation": [0, 135, 0],
-			"translation": [0, 1, 0],
-			"scale": [0.3, 0.3, 0.3]
-		},
-		"firstperson_lefthand": {
-			"rotation": [0, 135, 0],
-			"translation": [0, 1, 0],
-			"scale": [0.3, 0.3, 0.3]
-		},
 		"ground": {
 			"translation": [0, 2, 0],
 			"scale": [0.25, 0.25, 0.25]
@@ -250,6 +240,16 @@
 		"gui": {
 			"rotation": [30, 135, 0],
 			"scale": [0.7, 0.7, 0.7]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 135, 0],
+			"translation": [0, 0, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 135, 0],
+			"translation": [0, 0, 0],
+			"scale": [0.4, 0.4, 0.4]
 		}
 	},
 	"groups": [

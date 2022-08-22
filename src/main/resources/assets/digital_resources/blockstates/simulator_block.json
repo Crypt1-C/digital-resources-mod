@@ -1,5 +1,8 @@
 {
   "variants": {
-    "": {"model": "digital_resources:block/simulator_block"}
+    "facing=north": {"model": "digital_resources:block/simulator_block"},
+    "facing=east": {"model": "digital_resources:block/simulator_block", "y": 90 },
+    "facing=south": {"model": "digital_resources:block/simulator_block", "y": 180 },
+    "facing=west": {"model": "digital_resources:block/simulator_block", "y": 270 }
   }
 }

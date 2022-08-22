@@ -1,6 +1,7 @@
 package net.cryptic.digital.resources.block;
 
 import net.cryptic.digital.resources.Main;
+import net.cryptic.digital.resources.block.custom.SimulatorBlock;
 import net.cryptic.digital.resources.item.ModCreativeModeTab;
 import net.cryptic.digital.resources.item.ModItems;
 import net.minecraft.world.item.BlockItem;
@@ -22,7 +23,7 @@ public class ModBlocks {
 
 
     public static final RegistryObject<Block> SIMULATOR_BLOCK = registerBlock("simulator_block",
-            () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
+            () -> new SimulatorBlock(BlockBehaviour.Properties.of(Material.METAL)
                     .strength(9f)
                     .requiresCorrectToolForDrops()),
             ModCreativeModeTab.DIGITAL_TAB);
