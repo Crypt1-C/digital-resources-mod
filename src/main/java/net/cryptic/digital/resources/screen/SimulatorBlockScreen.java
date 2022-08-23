@@ -29,7 +29,7 @@ public class SimulatorBlockScreen extends AbstractContainerScreen<SimulatorBlock
         this.blit(pPoseStack, x, y, 0, 0, imageWidth, imageHeight);
 
         if(menu.isCrafting()) {
-            blit(pPoseStack, x + 29, y + 47, 168, 0, menu.getScaledProgress(), 9);
+            blit(pPoseStack, x + 29, y + 47, 0, 168, menu.getScaledProgress(), 9);
         }
 
     }

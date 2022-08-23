@@ -62,11 +62,11 @@ public class SimulatorBlockRecipe implements Recipe<SimpleContainer> {
 
     @Override
     public RecipeType<?> getType() {
-        return null;
+        return Type.INSTANCE;
     }
 
     public static class Type implements RecipeType<SimulatorBlockRecipe> {
-        private Type() {}
+        private Type() { }
         public static final Type INSTANCE = new Type();
         public static final String ID = "digital_simulating";
     }
@@ -131,6 +131,8 @@ public class SimulatorBlockRecipe implements Recipe<SimpleContainer> {
         private static <G> Class<G> castClass(Class<?> cls) {
             return (Class<G>)cls;
         }
+
+
     }
 
 }

@@ -8,7 +8,7 @@ import net.cryptic.digital.resources.recipe.ModRecipes;
 import net.cryptic.digital.resources.screen.ModMenuTypes;
 import net.cryptic.digital.resources.screen.SimulatorBlockScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
@@ -36,21 +36,17 @@ public class Main {
         ModRecipes.register(eventBus);
 
         eventBus.addListener(this::setup);
-        eventBus.addListener(this::clientSetup);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
     }
 
-    private void clientSetup(final FMLClientSetupEvent event) {
-        MenuScreens.register(ModMenuTypes.SIMULATOR_BLOCK_MENU.get(), SimulatorBlockScreen::new);
 
-    }
 
-    private void setup(final FMLCommonSetupEvent event) {
-        // some pre_init code
-        LOGGER.info("HELLO FROM PRE INIT");
-        LOGGER.info("DIRT BLOCK >> {}", Blocks.DIRT.getRegistryName());
+    public void setup(final FMLCommonSetupEvent event) {
+
+        //ModRecipes.DIGITAL_SIMULATING = RecipeType.register("digital_simulating");
+
     }
 
 }
