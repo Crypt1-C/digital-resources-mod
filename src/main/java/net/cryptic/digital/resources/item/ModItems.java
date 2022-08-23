@@ -1,6 +1,7 @@
 package net.cryptic.digital.resources.item;
 
 import net.cryptic.digital.resources.Main;
+import net.cryptic.digital.resources.item.custom.*;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -15,51 +16,51 @@ public class ModItems {
     // ingot cards
 
     public static final RegistryObject<Item> BRONZE_CARD = ITEMS.register("bronze_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new BronzeCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> COPPER_CARD = ITEMS.register("copper_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new CopperCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> EMPTY_CARD = ITEMS.register("empty_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new EmptyCardItem(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> GOLD_CARD = ITEMS.register("gold_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new GoldCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> IRON_CARD = ITEMS.register("iron_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new IronCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> LEAD_CARD = ITEMS.register("lead_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new LeadCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> NICKEL_CARD = ITEMS.register("nickel_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new NickelCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> OSMIUM_CARD = ITEMS.register("osmium_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new OsmiumCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> PLATINUM_CARD = ITEMS.register("platinum_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new PlatinumCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> SILVER_CARD = ITEMS.register("silver_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new SilverCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> TIN_CARD = ITEMS.register("tin_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new TinCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> URANIUM_CARD = ITEMS.register("uranium_card",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new UraniumCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     // upgrade items
 
     public static final RegistryObject<Item> EMPTY_UPGRADE = ITEMS.register("empty_upgrade",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new EmptyUpgradeItem(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> SPEED_UPGRADE = ITEMS.register("speed_upgrade",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new SpeedUpgradeItem(new Item.Properties().stacksTo(8).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> QUANTITY_UPGRADE = ITEMS.register("quantity_upgrade",
-            () -> new Item(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new QuantityUpgradeItem(new Item.Properties().stacksTo(8).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

@@ -16,6 +16,13 @@
   "item.digital_resources.speed_upgrade": "{Speed} Upgrade",
   "item.digital_resources.quantity_upgrade": "{Quantity} Upgrade",
 
+  "tooltip.digital_resources.needs_shift": "§8Press §5<SHIFT>§8 for more Info",
+  "tooltip.digital_resources.card.shift": "§7Used in the Simulator Block To Generate Resources according to the Chipset",
+  "tooltip.digital_resources.empty_card.shift": "§7Used for crafting other Resource Chipsets",
+  "tooltip.digital_resources.empty_upgrade.shift": "§7Used for crafting other Upgrade Modules",
+  "tooltip.digital_resources.speed_upgrade.shift": "§7Upgrades the §6Speed§7 of resource generation in the Simulator Block",
+  "tooltip.digital_resources.quantity_upgrade.shift": "§7Upgrades the §6Amount§7 of resource generated in the Simulator Block",
+
 
   "block.digital_resources.simulator_block": "Resource Simulator",
 
