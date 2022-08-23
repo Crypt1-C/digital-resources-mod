@@ -20,12 +20,12 @@ public class SimulatorBlockMenu extends AbstractContainerMenu {
     private final ContainerData data;
 
     public SimulatorBlockMenu(int pContainerId, Inventory inv, FriendlyByteBuf extraData) {
-        this(pContainerId, inv,inv.player.level.getBlockEntity(extraData.readBlockPos()),new SimpleContainerData(2));
+        this(pContainerId, inv,inv.player.level.getBlockEntity(extraData.readBlockPos()),new SimpleContainerData(3));
     }
 
     public SimulatorBlockMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.SIMULATOR_BLOCK_MENU.get(), pContainerId);
-        checkContainerSize(inv, 2);
+        checkContainerSize(inv, 3);
         blockEntity = ((SimulatorBlockBlockEntity) entity);
         this.level = inv.player.level;
         this.data = data;
@@ -36,10 +36,9 @@ public class SimulatorBlockMenu extends AbstractContainerMenu {
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 8, 9));
             this.addSlot(new ModResultSlot(handler, 1, 152, 56));
-            /*
-            this.addSlot(new SlotItemHandler(handler, 2, 8, 6));
-            this.addSlot(new SlotItemHandler(handler, 3, 26, 6));
-             */
+            this.addSlot(new SlotItemHandler(handler, 2, 152, 9));
+            //this.addSlot(new SlotItemHandler(handler, 3, 26, 6));
+
         });
 
         addDataSlots(data);
@@ -75,7 +74,7 @@ public class SimulatorBlockMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 3;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {

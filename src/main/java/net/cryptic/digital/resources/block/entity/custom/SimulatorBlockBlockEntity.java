@@ -42,7 +42,7 @@ import javax.annotation.Nonnull;
 import java.util.Optional;
 
 public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(2) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -53,7 +53,9 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
 
     protected final ContainerData data;
     private int progress = 0;
-    private int maxProgress = 72;
+
+    private int speed = 1;
+    private int maxProgress = 100;
 
     public SimulatorBlockBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SIMULATOR_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -140,7 +142,7 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, SimulatorBlockBlockEntity pBlockEntity) {
         if(hasRecipe(pBlockEntity)) {
             //pLevel.playLocalSound(pBlockEntity.worldPosition.getX(), pBlockEntity.worldPosition.getY(),pBlockEntity.worldPosition.getZ(),ModSounds.SIMULATOR_BLOCK_BOOTING_UP.get(),SoundSource.BLOCKS, 0.5f, 1.0f,false);
-            pBlockEntity.progress++;
+            pBlockEntity.progress = pBlockEntity.progress+ pBlockEntity.speed;
             setChanged(pLevel, pPos, pState);
             if(pBlockEntity.progress > pBlockEntity.maxProgress) {
                 craftItem(pBlockEntity);
@@ -181,11 +183,26 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
 
 
         if(match.isPresent()) {
+            // quantity upgrade
+            if(entity.itemHandler.getStackInSlot(2).getItem() == ModItems.QUANTITY_UPGRADE.get()) {
+                entity.itemHandler.setStackInSlot(1, new ItemStack(match.get().getResultItem().getItem(),
+                        entity.itemHandler.getStackInSlot(1).getCount() + entity.itemHandler.getStackInSlot(2).getCount()*2));
 
-            entity.itemHandler.setStackInSlot(1, new ItemStack(match.get().getResultItem().getItem(),
-                    entity.itemHandler.getStackInSlot(1).getCount() + 1));
+                entity.resetProgress();
+                // speed upgrade
+            /*} else if (entity.itemHandler.getStackInSlot(2).getItem() == ModItems.SPEED_UPGRADE.get()) {
+                entity.speed = entity.itemHandler.getStackInSlot(2).getCount()*2;
+                entity.itemHandler.setStackInSlot(1, new ItemStack(match.get().getResultItem().getItem(),
+                        entity.itemHandler.getStackInSlot(1).getCount() + 1));
 
-            entity.resetProgress();
+                entity.resetProgress();*/
+                //no upgrades
+            } else {
+                entity.itemHandler.setStackInSlot(1, new ItemStack(match.get().getResultItem().getItem(),
+                        entity.itemHandler.getStackInSlot(1).getCount() + 1));
+
+                entity.resetProgress();
+            }
 
         }
     }
