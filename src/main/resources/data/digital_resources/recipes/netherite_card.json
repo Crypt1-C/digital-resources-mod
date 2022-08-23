@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BCB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "tag": "forge:ores/netherite_scrap"
+    },
+    "C": {
+      "item": "digital_resources:empty_card"
+    }
+  },
+  "result": {
+    "item": "digital_resources:netherite_card"
+  }
+}

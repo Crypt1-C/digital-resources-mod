@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GGG",
+    "ESE",
+    "IMI"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:ingots/gold"
+    },
+    "I": {
+      "tag": "forge:ingots/netherite"
+    },
+    "E": {
+      "item": "minecraft:dragon_breath"
+    },
+    "S": {
+      "item": "minecraft:shulker_shell"
+    },
+    "M": {
+      "item": "minecraft:phantom_membrane"
+    }
+  },
+  "result": {
+    "item": "digital_resources:empty_card"
+  }
+}

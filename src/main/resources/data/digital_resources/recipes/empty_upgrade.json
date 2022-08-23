@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GIG",
+    "IMI",
+    "GIG"
+  ],
+  "key": {
+    "G": {
+      "tag": "forge:ingots/gold"
+    },
+    "I": {
+      "tag": "forge:ingots/netherite"
+    },
+    "M": {
+      "item": "minecraft:phantom_membrane"
+    }
+  },
+  "result": {
+    "item": "digital_resources:empty_upgrade"
+  }
+}

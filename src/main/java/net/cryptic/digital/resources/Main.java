@@ -6,13 +6,10 @@ import net.cryptic.digital.resources.block.entity.ModBlockEntities;
 import net.cryptic.digital.resources.item.ModItems;
 import net.cryptic.digital.resources.recipe.ModRecipes;
 import net.cryptic.digital.resources.screen.ModMenuTypes;
-import net.cryptic.digital.resources.screen.SimulatorBlockScreen;
-import net.minecraft.client.gui.screens.MenuScreens;
-import net.minecraft.world.item.crafting.RecipeType;
+import net.cryptic.digital.resources.sound.ModSounds;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
@@ -30,7 +27,7 @@ public class Main {
 
         ModItems.register(eventBus);
         ModBlocks.register(eventBus);
-
+        ModSounds.register(eventBus);
         ModBlockEntities.register(eventBus);
         ModMenuTypes.register(eventBus);
         ModRecipes.register(eventBus);

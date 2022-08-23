@@ -20,13 +20,13 @@ import javax.annotation.Nonnull;
 public class SimulatorBlockRecipeCategory implements IRecipeCategory<SimulatorBlockRecipe> {
     public final static ResourceLocation UID = new ResourceLocation(Main.MOD_ID, "digital_simulating");
     public final static ResourceLocation TEXTURE =
-            new ResourceLocation(Main.MOD_ID, "textures/gui/simulator_block_gui.png");
+            new ResourceLocation(Main.MOD_ID, "textures/gui/simulator_block_gui_jei.png");
 
     private final IDrawable background;
     private final IDrawable icon;
 
     public SimulatorBlockRecipeCategory(IGuiHelper helper) {
-        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 85);
+        this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 82);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.SIMULATOR_BLOCK.get()));
     }
 
@@ -58,8 +58,8 @@ public class SimulatorBlockRecipeCategory implements IRecipeCategory<SimulatorBl
     @Override
     public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull SimulatorBlockRecipe recipe, @Nonnull IFocusGroup focusGroup) {
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 8, 44).addIngredients(recipe.getIngredients().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 8, 9).addIngredients(recipe.getIngredients().get(0));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 152, 44).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 152, 56).addItemStack(recipe.getResultItem());
     }
 }

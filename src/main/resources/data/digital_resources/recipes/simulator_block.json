@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "MUM",
+    "BSB",
+    "BNB"
+  ],
+  "key": {
+    "N": {
+      "tag": "forge:storage_blocks/netherite"
+    },
+    "B": {
+      "item": "minecraft:black_concrete"
+    },
+    "S": {
+      "item": "minecraft:nether_star"
+    },
+    "M": {
+      "item": "digital_resources:empty_upgrade"
+    },
+    "U": {
+      "item": "digital_resources:empty_card"
+    }
+  },
+  "result": {
+    "item": "digital_resources:simulator_block"
+  }
+}

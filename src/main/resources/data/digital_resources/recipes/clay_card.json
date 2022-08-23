@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BCB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:clay"
+    },
+    "C": {
+      "item": "digital_resources:empty_card"
+    }
+  },
+  "result": {
+    "item": "digital_resources:clay_card"
+  }
+}

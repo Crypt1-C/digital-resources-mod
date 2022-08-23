@@ -1,0 +1,11 @@
+{
+  "type": "digital_resources:digital_simulating",
+  "ingredients": [
+    {
+      "item": "digital_resources:coal_card"
+    }
+  ],
+  "output": {
+    "item": "minecraft:coal"
+  }
+}

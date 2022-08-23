@@ -1,5 +1,26 @@
 {
-  "item.digital_resources.empty_card": "Null Chipset",
+  "item.digital_resources.empty_card": "<null> Chipset",
+
+  "item.digital_resources.aluminum_card": "<Aluminum> Chipset",
+  "item.digital_resources.amethyst_card": "<Amethyst> Chipset",
+  "item.digital_resources.andesite_alloy_card": "<Andesite Alloy> Chipset",
+  "item.digital_resources.brass_card": "<Brass> Chipset",
+  "item.digital_resources.chorus_card": "<Chorus> Chipset",
+  "item.digital_resources.clay_card": "<Clay> Chipset",
+  "item.digital_resources.coal_card": "<Coal> Chipset",
+  "item.digital_resources.constantan_card": "<Constantan> Chipset",
+  "item.digital_resources.diamond_card": "<Diamond> Chipset",
+  "item.digital_resources.electrum_card": "<Electrum> Chipset",
+  "item.digital_resources.emerald_card": "<Emerald> Chipset",
+  "item.digital_resources.glowstone_card": "<Glowstone> Chipset",
+  "item.digital_resources.lapis_card": "<Lapis> Chipset",
+  "item.digital_resources.netherite_card": "<Netherite> Chipset",
+  "item.digital_resources.nether_brick_card": "<Nether Brick >Chipset",
+  "item.digital_resources.nether_wart_card": "<Nether Wart> Chipset",
+  "item.digital_resources.quartz_card": "<Quartz> Chipset",
+  "item.digital_resources.redstone_card": "<Redstone> Chipset",
+  "item.digital_resources.zinc_card": "<Zinc> Chipset",
+  "item.digital_resources.steel_card": "<Steel> Chipset",
   "item.digital_resources.bronze_card": "<Bronze> Chipset",
   "item.digital_resources.copper_card": "<Copper> Chipset",
   "item.digital_resources.gold_card": "<Gold> Chipset",
@@ -12,19 +33,23 @@
   "item.digital_resources.tin_card": "<Tin> Chipset",
   "item.digital_resources.uranium_card": "<Uranium> Chipset",
 
-  "item.digital_resources.empty_upgrade": "Null Upgrade",
-  "item.digital_resources.speed_upgrade": "{Speed} Upgrade",
-  "item.digital_resources.quantity_upgrade": "{Quantity} Upgrade",
+  "item.digital_resources.empty_upgrade": "{null} Upgrade Module",
+  "item.digital_resources.speed_upgrade": "{Speed} Upgrade Module",
+  "item.digital_resources.quantity_upgrade": "{Quantity} Upgrade Module",
 
-  "tooltip.digital_resources.needs_shift": "§8Press §5<SHIFT>§8 for more Info",
-  "tooltip.digital_resources.card.shift": "§7Used in the Simulator Block To Generate Resources according to the Chipset",
-  "tooltip.digital_resources.empty_card.shift": "§7Used for crafting other Resource Chipsets",
-  "tooltip.digital_resources.empty_upgrade.shift": "§7Used for crafting other Upgrade Modules",
-  "tooltip.digital_resources.speed_upgrade.shift": "§7Upgrades the §6Speed§7 of resource generation in the Simulator Block",
-  "tooltip.digital_resources.quantity_upgrade.shift": "§7Upgrades the §6Amount§7 of resource generated in the Simulator Block",
+  "tooltip.digital_resources.needs_shift": "§8Press §5[SHIFT]§8 for more Info",
+  "tooltip.digital_resources.card.shift": "§8Used in the Simulator Block To Generate Resources according to the Chipset",
+  "tooltip.digital_resources.empty_card.shift": "§8Used for crafting other Resource Chipsets",
+  "tooltip.digital_resources.empty_upgrade.shift": "§8Used for crafting other Upgrade Modules",
+  "tooltip.digital_resources.speed_upgrade.shift": "§8Upgrades the §6Speed§8 of resource generation in the Simulator Block",
+  "tooltip.digital_resources.quantity_upgrade.shift": "§8Upgrades the §6Amount§8 of resource generated in the Simulator Block",
 
 
   "block.digital_resources.simulator_block": "Resource Simulator",
+
+  "sounds.digital_resources.simulator_block.working": "Simulation Block Simulating",
+  "sounds.digital_resources.simulator_block.booting_up": "Simulation Block Booting Up",
+  "sounds.digital_resources.simulator_block.shutting_down": "Simulation Block Shutting Down",
 
   "itemGroup.digital_resources": "Digital Resources"
 }

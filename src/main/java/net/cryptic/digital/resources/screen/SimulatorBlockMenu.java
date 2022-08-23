@@ -9,7 +9,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.*;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.SlotItemHandler;
@@ -26,7 +25,7 @@ public class SimulatorBlockMenu extends AbstractContainerMenu {
 
     public SimulatorBlockMenu(int pContainerId, Inventory inv, BlockEntity entity, ContainerData data) {
         super(ModMenuTypes.SIMULATOR_BLOCK_MENU.get(), pContainerId);
-        checkContainerSize(inv, 5);
+        checkContainerSize(inv, 2);
         blockEntity = ((SimulatorBlockBlockEntity) entity);
         this.level = inv.player.level;
         this.data = data;
@@ -35,8 +34,8 @@ public class SimulatorBlockMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 8, 44));
-            this.addSlot(new ModResultSlot(handler, 1, 152, 44));
+            this.addSlot(new SlotItemHandler(handler, 0, 8, 9));
+            this.addSlot(new ModResultSlot(handler, 1, 152, 56));
             /*
             this.addSlot(new SlotItemHandler(handler, 2, 8, 6));
             this.addSlot(new SlotItemHandler(handler, 3, 26, 6));
@@ -76,12 +75,16 @@ public class SimulatorBlockMenu extends AbstractContainerMenu {
     private static final int TE_INVENTORY_FIRST_SLOT_INDEX = VANILLA_FIRST_SLOT_INDEX + VANILLA_SLOT_COUNT;
 
     // THIS YOU HAVE TO DEFINE!
-    private static final int TE_INVENTORY_SLOT_COUNT = 5;  // must be the number of slots you have!
+    private static final int TE_INVENTORY_SLOT_COUNT = 2;  // must be the number of slots you have!
 
     @Override
     public ItemStack quickMoveStack(Player playerIn, int index) {
         Slot sourceSlot = slots.get(index);
-        if (sourceSlot == null || !sourceSlot.hasItem()) return ItemStack.EMPTY;  //EMPTY_ITEM
+
+        if (!sourceSlot.hasItem()) {
+            return ItemStack.EMPTY; //EMPTY_ITEM
+        }
+
         ItemStack sourceStack = sourceSlot.getItem();
         ItemStack copyOfSourceStack = sourceStack.copy();
 
@@ -129,9 +132,4 @@ public class SimulatorBlockMenu extends AbstractContainerMenu {
             this.addSlot(new Slot(playerInventory, i, 8 + i * 18, 144));
         }
     }
-    /*
-    @Override
-    public boolean stillValid(Player pPlayer) {
-        return false;
-    }*/
 }

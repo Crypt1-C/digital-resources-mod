@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "EGE",
+    "GCG",
+    "EGE"
+  ],
+  "key": {
+    "E": {
+      "item": "minecraft:end_crystal"
+    },
+    "C": {
+      "item": "digital_resources:empty_upgrade"
+    },
+    "G": {
+      "item": "minecraft:ghast_tear"
+    }
+  },
+  "result": {
+    "item": "digital_resources:quantity_upgrade"
+  }
+}

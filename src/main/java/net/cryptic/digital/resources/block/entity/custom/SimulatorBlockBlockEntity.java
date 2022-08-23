@@ -1,17 +1,22 @@
 package net.cryptic.digital.resources.block.entity.custom;
 
+import net.cryptic.digital.resources.block.custom.SimulatorBlock;
 import net.cryptic.digital.resources.block.entity.ModBlockEntities;
 import net.cryptic.digital.resources.item.ModItems;
 import net.cryptic.digital.resources.recipe.SimulatorBlockRecipe;
 import net.cryptic.digital.resources.screen.SimulatorBlockMenu;
+import net.cryptic.digital.resources.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TextComponent;
+import net.minecraft.sounds.SoundEvent;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Containers;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.SimpleContainer;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -21,6 +26,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
@@ -35,7 +42,7 @@ import javax.annotation.Nonnull;
 import java.util.Optional;
 
 public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(5) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(2) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -72,9 +79,11 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
         };
     }
 
+
+
     @Override
     public Component getDisplayName() {
-        return new TextComponent("Simulator Block");
+        return new TextComponent("");
     }
 
     @Nullable
@@ -130,6 +139,7 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, SimulatorBlockBlockEntity pBlockEntity) {
         if(hasRecipe(pBlockEntity)) {
+            //pLevel.playLocalSound(pBlockEntity.worldPosition.getX(), pBlockEntity.worldPosition.getY(),pBlockEntity.worldPosition.getZ(),ModSounds.SIMULATOR_BLOCK_BOOTING_UP.get(),SoundSource.BLOCKS, 0.5f, 1.0f,false);
             pBlockEntity.progress++;
             setChanged(pLevel, pPos, pState);
             if(pBlockEntity.progress > pBlockEntity.maxProgress) {
@@ -161,14 +171,14 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
 
     private static void craftItem(SimulatorBlockBlockEntity entity) {
         Level level = entity.level;
-
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
         for (int i = 0; i < entity.itemHandler.getSlots(); i++) {
             inventory.setItem(i, entity.itemHandler.getStackInSlot(i));
         }
 
-        Optional<SimulatorBlockRecipe> match = level.getRecipeManager()
-                .getRecipeFor(SimulatorBlockRecipe.Type.INSTANCE, inventory, level);
+        Optional<SimulatorBlockRecipe> match = level.getRecipeManager().getRecipeFor(SimulatorBlockRecipe.Type.INSTANCE, inventory, level);
+
+
 
         if(match.isPresent()) {
 
@@ -176,11 +186,13 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
                     entity.itemHandler.getStackInSlot(1).getCount() + 1));
 
             entity.resetProgress();
+
         }
     }
 
     private void resetProgress() {
         this.progress = 0;
+
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {

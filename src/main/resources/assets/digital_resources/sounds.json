@@ -1,0 +1,20 @@
+{
+  "simulator_block_working": {
+    "subtitle": "sounds.digital_resources.simulator_block.working",
+    "sounds": [
+      "digital_resources:simulator_block_working"
+    ]
+  },
+  "simulator_block_booting_up": {
+    "subtitle": "sounds.digital_resources.simulator_block.booting_up",
+    "sounds": [
+      "digital_resources:simulator_block_booting_up"
+    ]
+  },
+  "simulator_block_shutting_down": {
+  "subtitle": "sounds.digital_resources.simulator_block.shutting_down",
+  "sounds": [
+    "digital_resources:simulator_block_shutting_down"
+  ]
+}
+}

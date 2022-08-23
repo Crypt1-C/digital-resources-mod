@@ -24,7 +24,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> SIMULATOR_BLOCK = registerBlock("simulator_block",
             () -> new SimulatorBlock(BlockBehaviour.Properties.of(Material.METAL)
-                    .strength(9f)
+                    .strength(4f)
                     .requiresCorrectToolForDrops()),
             ModCreativeModeTab.DIGITAL_TAB);
 

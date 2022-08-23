@@ -1,0 +1,11 @@
+{
+  "type": "digital_resources:digital_simulating",
+  "ingredients": [
+    {
+      "item": "digital_resources:clay_card"
+    }
+  ],
+  "output": {
+    "item": "minecraft:clay_ball"
+  }
+}

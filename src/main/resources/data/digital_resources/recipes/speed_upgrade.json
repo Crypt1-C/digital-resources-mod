@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "BBB",
+    "BCB",
+    "BBB"
+  ],
+  "key": {
+    "B": {
+      "item": "minecraft:sugar"
+    },
+    "C": {
+      "item": "digital_resources:empty_upgrade"
+    }
+  },
+  "result": {
+    "item": "digital_resources:speed_upgrade"
+  }
+}

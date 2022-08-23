@@ -2,10 +2,13 @@ package net.cryptic.digital.resources.block.custom;
 
 import net.cryptic.digital.resources.block.entity.ModBlockEntities;
 import net.cryptic.digital.resources.block.entity.custom.SimulatorBlockBlockEntity;
+import net.cryptic.digital.resources.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.ai.targeting.TargetingConditions;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -81,8 +84,7 @@ public class SimulatorBlock extends BaseEntityBlock  {
     }
 
     @Override
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos,
-                                 Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         if (!pLevel.isClientSide()) {
             BlockEntity entity = pLevel.getBlockEntity(pPos);
             if(entity instanceof SimulatorBlockBlockEntity) {
