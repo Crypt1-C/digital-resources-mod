@@ -58,8 +58,8 @@ public class SimulatorBlockRecipeCategory implements IRecipeCategory<SimulatorBl
     @Override
     public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull SimulatorBlockRecipe recipe, @Nonnull IFocusGroup focusGroup) {
 
-        builder.addSlot(RecipeIngredientRole.INPUT, 8, 9).addIngredients(recipe.getIngredients().get(0));
+        builder.addSlot(RecipeIngredientRole.INPUT, 8, 7).addIngredients(recipe.getIngredients().get(0));
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 152, 56).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 152, 57).addItemStack(recipe.getResultItem());
     }
 }

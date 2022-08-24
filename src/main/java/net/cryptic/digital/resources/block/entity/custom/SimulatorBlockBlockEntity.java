@@ -42,7 +42,7 @@ import javax.annotation.Nonnull;
 import java.util.Optional;
 
 public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvider {
-    private final ItemStackHandler itemHandler = new ItemStackHandler(3) {
+    private final ItemStackHandler itemHandler = new ItemStackHandler(4) {
         @Override
         protected void onContentsChanged(int slot) {
             setChanged();
@@ -55,7 +55,7 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
     private int progress = 0;
 
     private int speed = 1;
-    private int maxProgress = 100;
+    private int maxProgress = 200;
 
     public SimulatorBlockBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SIMULATOR_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -165,12 +165,6 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
         return match.isPresent() && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem());
     }
 
-    /*
-     private static boolean hasToolsInToolSlot(SimulatorBlockBlockEntity entity) {
-        return entity.itemHandler.getStackInSlot(2).getItem() == ModItems.GEM_CUTTER_TOOL.get();
-    }
-    */
-
     private static void craftItem(SimulatorBlockBlockEntity entity) {
         Level level = entity.level;
         SimpleContainer inventory = new SimpleContainer(entity.itemHandler.getSlots());
@@ -184,27 +178,29 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
 
         if(match.isPresent()) {
             // quantity upgrade
-            if(entity.itemHandler.getStackInSlot(2).getItem() == ModItems.QUANTITY_UPGRADE.get()) {
-                entity.itemHandler.setStackInSlot(1, new ItemStack(match.get().getResultItem().getItem(),
-                        entity.itemHandler.getStackInSlot(1).getCount() + entity.itemHandler.getStackInSlot(2).getCount()*2));
+            if (entity.itemHandler.getStackInSlot(1).getItem() == ModItems.QUANTITY_UPGRADE.get()) {
+                entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
+                        entity.itemHandler.getStackInSlot(2).getCount() + entity.itemHandler.getStackInSlot(1).getCount() * 2));
 
                 entity.resetProgress();
                 // speed upgrade
-            /*} else if (entity.itemHandler.getStackInSlot(2).getItem() == ModItems.SPEED_UPGRADE.get()) {
-                entity.speed = entity.itemHandler.getStackInSlot(2).getCount()*2;
-                entity.itemHandler.setStackInSlot(1, new ItemStack(match.get().getResultItem().getItem(),
-                        entity.itemHandler.getStackInSlot(1).getCount() + 1));
+            } else if (entity.itemHandler.getStackInSlot(1).getItem() == ModItems.SPEED_UPGRADE.get()) {
+                entity.speed = entity.itemHandler.getStackInSlot(1).getCount() * 2;
+                entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
+                        entity.itemHandler.getStackInSlot(2).getCount() + 1));
 
-                entity.resetProgress();*/
-                //no upgrades
+                entity.resetProgress();
             } else {
-                entity.itemHandler.setStackInSlot(1, new ItemStack(match.get().getResultItem().getItem(),
-                        entity.itemHandler.getStackInSlot(1).getCount() + 1));
+                //no upgrades - invalid upgrades
+                entity.speed = 1;
+                entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
+                        entity.itemHandler.getStackInSlot(2).getCount() + 1));
 
                 entity.resetProgress();
             }
 
         }
+
     }
 
     private void resetProgress() {
@@ -213,10 +209,10 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
     }
 
     private static boolean canInsertItemIntoOutputSlot(SimpleContainer inventory, ItemStack output) {
-        return inventory.getItem(1).getItem() == output.getItem() || inventory.getItem(1).isEmpty();
+        return inventory.getItem(2).getItem() == output.getItem() || inventory.getItem(2).isEmpty();
     }
 
     private static boolean canInsertAmountIntoOutputSlot(SimpleContainer inventory) {
-        return inventory.getItem(1).getMaxStackSize() > inventory.getItem(1).getCount();
+        return inventory.getItem(2).getMaxStackSize() > inventory.getItem(2).getCount();
     }
 }
