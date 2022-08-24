@@ -2,9 +2,13 @@ package net.cryptic.digital.resources.block.custom;
 
 import net.cryptic.digital.resources.block.entity.ModBlockEntities;
 import net.cryptic.digital.resources.block.entity.custom.SimulatorBlockBlockEntity;
+import net.cryptic.digital.resources.particle.ModParticles;
 import net.cryptic.digital.resources.sound.ModSounds;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -20,6 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -27,9 +32,14 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
+
 public class SimulatorBlock extends BaseEntityBlock  {
 
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+
+    public static final BooleanProperty WORKING = BooleanProperty.create("working");
 
     public SimulatorBlock(Properties pProperties) {
         super(pProperties);
@@ -62,6 +72,7 @@ public class SimulatorBlock extends BaseEntityBlock  {
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(FACING);
+        pBuilder.add(WORKING);
     }
 
 
@@ -93,8 +104,29 @@ public class SimulatorBlock extends BaseEntityBlock  {
                 throw new IllegalStateException("Our Container provider is missing!");
             }
         }
-
+        //pPlayer.playSound(ModSounds.SIMULATOR_BLOCK_BOOTING_UP.get(),0.7f,1f);
         return InteractionResult.sidedSuccess(pLevel.isClientSide());
+    }
+
+    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random pRand) {
+        if (pState.getValue(WORKING)) {
+            double d0 = (double)pPos.getX() + 0.5D;
+            double d1 = (double)pPos.getY();
+            double d2 = (double)pPos.getZ() + 0.5D;
+
+            //pLevel.playLocalSound(d0, d1, d2, ModSounds.SIMULATOR_BLOCK_WORKING.get(), SoundSource.BLOCKS, 1.0F, 1.0F, false);
+
+
+
+            Direction direction = pState.getValue(FACING);
+            Direction.Axis direction$axis = direction.getAxis();
+            //double d3 = 0.52D;
+            double d4 = pRand.nextDouble() * 0.6D - 0.3D;
+            double d5 = direction$axis == Direction.Axis.X ? (double)direction.getStepX() * 0.52D : d4;
+            double d6 = pRand.nextDouble() * 8.0D / 16.0D;
+            double d7 = direction$axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52D : d4;
+            pLevel.addParticle(ModParticles.BINARY_PARTICLES.get(), d0 + d5, d1 + d6, d2 + d7, 0.0D, 0.0D, 0.0D);
+        }
     }
 
     @Nullable

@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.cryptic.digital.resources.block.ModBlocks;
 import net.cryptic.digital.resources.block.entity.ModBlockEntities;
 import net.cryptic.digital.resources.item.ModItems;
+import net.cryptic.digital.resources.particle.ModParticles;
 import net.cryptic.digital.resources.recipe.ModRecipes;
 import net.cryptic.digital.resources.screen.ModMenuTypes;
 import net.cryptic.digital.resources.sound.ModSounds;
@@ -31,6 +32,7 @@ public class Main {
         ModBlockEntities.register(eventBus);
         ModMenuTypes.register(eventBus);
         ModRecipes.register(eventBus);
+        ModParticles.register(eventBus);
 
         eventBus.addListener(this::setup);
 

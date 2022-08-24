@@ -29,6 +29,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.util.LazyOptional;
@@ -107,7 +108,7 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
     private int progress = 0;
 
     private int speed = 1;
-    private int maxProgress = 20*60*2; // 1 minute
+    private int maxProgress = 20*60*2; // 2 minutes
 
     public SimulatorBlockBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SIMULATOR_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -191,9 +192,11 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
         Containers.dropContents(this.level, this.worldPosition, inventory);
     }
 
-    public static void tick(Level pLevel, BlockPos pPos, BlockState pState, SimulatorBlockBlockEntity pBlockEntity) {
 
+    public static void tick(Level pLevel, BlockPos pPos, BlockState pState, SimulatorBlockBlockEntity pBlockEntity) {
+        int isPlaying = 0;
         if(hasRecipe(pBlockEntity)) {
+            pLevel.setBlock(pPos,pState.setValue(SimulatorBlock.WORKING,true),3);
             if (pBlockEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.SPEED_UPGRADE.get()) {
                 pBlockEntity.speed = pBlockEntity.itemHandler.getStackInSlot(1).getCount() * 2;
             } else if(pBlockEntity.itemHandler.getStackInSlot(3).getItem() == ModItems.SPEED_UPGRADE.get()) {
@@ -209,8 +212,14 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
                 craftItem(pBlockEntity);
             }
         } else {
+
+
+            pLevel.setBlock(pPos,pState.setValue(SimulatorBlock.WORKING,false),3);
+            //pLevel.playLocalSound(pPos.getX(),pPos.getY(),pPos.getZ(),ModSounds.SIMULATOR_BLOCK_SHUTTING_DOWN.get(),SoundSource.BLOCKS,1f,1f,false);
             pBlockEntity.resetProgress();
+
             setChanged(pLevel, pPos, pState);
+
         }
     }
 

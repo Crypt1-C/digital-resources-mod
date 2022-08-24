@@ -1,8 +1,13 @@
 {
   "variants": {
-    "facing=north": {"model": "digital_resources:block/simulator_block"},
-    "facing=east": {"model": "digital_resources:block/simulator_block", "y": 90 },
-    "facing=south": {"model": "digital_resources:block/simulator_block", "y": 180 },
-    "facing=west": {"model": "digital_resources:block/simulator_block", "y": 270 }
+    "facing=north,working=false": {"model": "digital_resources:block/simulator_block"},
+    "facing=east,working=false": {"model": "digital_resources:block/simulator_block", "y": 90 },
+    "facing=south,working=false": {"model": "digital_resources:block/simulator_block", "y": 180 },
+    "facing=west,working=false": {"model": "digital_resources:block/simulator_block", "y": 270 },
+
+    "facing=north,working=true": {"model": "digital_resources:block/simulator_block_working"},
+    "facing=east,working=true": {"model": "digital_resources:block/simulator_block_working", "y": 90 },
+    "facing=south,working=true": {"model": "digital_resources:block/simulator_block_working", "y": 180 },
+    "facing=west,working=true": {"model": "digital_resources:block/simulator_block_working", "y": 270 }
   }
 }

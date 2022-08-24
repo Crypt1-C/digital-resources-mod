@@ -1,12 +1,16 @@
 package net.cryptic.digital.resources.event;
 
 import net.cryptic.digital.resources.Main;
+import net.cryptic.digital.resources.particle.ModParticles;
+import net.cryptic.digital.resources.particle.custom.BinaryParticle;
 import net.cryptic.digital.resources.recipe.SimulatorBlockRecipe;
 import net.cryptic.digital.resources.screen.ModMenuTypes;
 import net.cryptic.digital.resources.screen.SimulatorBlockScreen;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.core.Registry;
 import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -19,6 +23,12 @@ public class ModEventBusEvents {
     public static void registerRecipeTypes(final RegistryEvent.Register<RecipeSerializer<?>> event) {
         Registry.register(Registry.RECIPE_TYPE, SimulatorBlockRecipe.Type.ID, SimulatorBlockRecipe.Type.INSTANCE);
     }
+
+    @SubscribeEvent
+    public static void registerParticleFactories(final ParticleFactoryRegisterEvent event) {
+        Minecraft.getInstance().particleEngine.register(ModParticles.BINARY_PARTICLES.get(), BinaryParticle.Provider::new);
+    }
+
     @SubscribeEvent
     public static void clientSetup(final FMLClientSetupEvent event) {
         MenuScreens.register(ModMenuTypes.SIMULATOR_BLOCK_MENU.get(), SimulatorBlockScreen::new);
