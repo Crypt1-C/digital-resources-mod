@@ -55,7 +55,7 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
     private int progress = 0;
 
     private int speed = 1;
-    private int maxProgress = 200;
+    private int maxProgress = 20*60*2; // 1 minute
 
     public SimulatorBlockBlockEntity(BlockPos pPos, BlockState pBlockState) {
         super(ModBlockEntities.SIMULATOR_BLOCK_ENTITY.get(), pPos, pBlockState);
@@ -85,7 +85,7 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
 
     @Override
     public Component getDisplayName() {
-        return new TextComponent("");
+        return new TextComponent(" ");
     }
 
     @Nullable
@@ -141,8 +141,14 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, SimulatorBlockBlockEntity pBlockEntity) {
         if(hasRecipe(pBlockEntity)) {
-            //pLevel.playLocalSound(pBlockEntity.worldPosition.getX(), pBlockEntity.worldPosition.getY(),pBlockEntity.worldPosition.getZ(),ModSounds.SIMULATOR_BLOCK_BOOTING_UP.get(),SoundSource.BLOCKS, 0.5f, 1.0f,false);
-            pBlockEntity.progress = pBlockEntity.progress+ pBlockEntity.speed;
+            if (pBlockEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.SPEED_UPGRADE.get()) {
+                pBlockEntity.speed = pBlockEntity.itemHandler.getStackInSlot(1).getCount() * 2;
+            } else if(pBlockEntity.itemHandler.getStackInSlot(3).getItem() == ModItems.SPEED_UPGRADE.get()) {
+                pBlockEntity.speed = pBlockEntity.itemHandler.getStackInSlot(3).getCount() * 2;
+            } else {
+                pBlockEntity.speed = 1;
+            }
+            pBlockEntity.progress = pBlockEntity.progress + pBlockEntity.speed;
             setChanged(pLevel, pPos, pState);
             if(pBlockEntity.progress > pBlockEntity.maxProgress) {
                 craftItem(pBlockEntity);
@@ -178,21 +184,21 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
 
         if(match.isPresent()) {
             // quantity upgrade
+            // slot 1
             if (entity.itemHandler.getStackInSlot(1).getItem() == ModItems.QUANTITY_UPGRADE.get()) {
                 entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
                         entity.itemHandler.getStackInSlot(2).getCount() + entity.itemHandler.getStackInSlot(1).getCount() * 2));
 
                 entity.resetProgress();
-                // speed upgrade
-            } else if (entity.itemHandler.getStackInSlot(1).getItem() == ModItems.SPEED_UPGRADE.get()) {
-                entity.speed = entity.itemHandler.getStackInSlot(1).getCount() * 2;
+            //slot 2
+            } else if (entity.itemHandler.getStackInSlot(3).getItem() == ModItems.QUANTITY_UPGRADE.get()) {
                 entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
-                        entity.itemHandler.getStackInSlot(2).getCount() + 1));
+                        entity.itemHandler.getStackInSlot(2).getCount() + entity.itemHandler.getStackInSlot(3).getCount() * 2));
 
                 entity.resetProgress();
+
             } else {
                 //no upgrades - invalid upgrades
-                entity.speed = 1;
                 entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
                         entity.itemHandler.getStackInSlot(2).getCount() + 1));
 

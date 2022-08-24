@@ -34,9 +34,9 @@ public class SimulatorBlockMenu extends AbstractContainerMenu {
 
         this.blockEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY).ifPresent(handler -> {
             this.addSlot(new SlotItemHandler(handler, 0, 8, 7));    //input slot
-            this.addSlot(new SlotItemHandler(handler, 1, 152, 7));    // upgrade slot
+            this.addSlot(new SlotItemHandler(handler, 1, 154, 7));    // upgrade slot 1
             this.addSlot(new ModResultSlot(handler, 2, 152, 57));   //output slot
-            //this.addSlot(new SlotItemHandler(handler, 3, 26, 6));
+            this.addSlot(new SlotItemHandler(handler, 3, 154, 27)); // upgrade slot 2
 
         });
 
