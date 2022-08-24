@@ -47,6 +47,58 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
         protected void onContentsChanged(int slot) {
             setChanged();
         }
+
+        @Override
+        public boolean isItemValid(int slot, @NotNull ItemStack stack) {
+            if (slot==1 || slot == 3) {
+                if (stack.getItem() == ModItems.SPEED_UPGRADE.get()) {
+                    return true;
+                } else if (stack.getItem() == ModItems.QUANTITY_UPGRADE.get()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else if (slot==0) {
+                if (stack.getItem() == ModItems.ALUMINUM_CARD.get()
+                || stack.getItem() == ModItems.AMETHYST_CARD.get()
+                || stack.getItem() == ModItems.AMETHYST_CARD.get()
+                || stack.getItem() == ModItems.ANDESITE_ALLOY_CARD.get()
+                || stack.getItem() == ModItems.BRASS_CARD.get()
+                || stack.getItem() == ModItems.BRONZE_CARD.get()
+                || stack.getItem() == ModItems.CHORUS_CARD.get()
+                || stack.getItem() == ModItems.CLAY_CARD.get()
+                || stack.getItem() == ModItems.COAL_CARD.get()
+                || stack.getItem() == ModItems.CONSTANTAN_CARD.get()
+                || stack.getItem() == ModItems.COPPER_CARD.get()
+                || stack.getItem() == ModItems.DIAMOND_CARD.get()
+                || stack.getItem() == ModItems.ELECTRUM_CARD.get()
+                || stack.getItem() == ModItems.EMERALD_CARD.get()
+                || stack.getItem() == ModItems.GLOWSTONE_CARD.get()
+                || stack.getItem() == ModItems.GOLD_CARD.get()
+                || stack.getItem() == ModItems.IRON_CARD.get()
+                || stack.getItem() == ModItems.LAPIS_CARD.get()
+                || stack.getItem() == ModItems.LEAD_CARD.get()
+                || stack.getItem() == ModItems.NETHER_BRICK_CARD.get()
+                || stack.getItem() == ModItems.NETHERITE_CARD.get()
+                || stack.getItem() == ModItems.NETHER_WART_CARD.get()
+                || stack.getItem() == ModItems.NICKEL_CARD.get()
+                || stack.getItem() == ModItems.OSMIUM_CARD.get()
+                || stack.getItem() == ModItems.PLATINUM_CARD.get()
+                || stack.getItem() == ModItems.QUARTZ_CARD.get()
+                || stack.getItem() == ModItems.REDSTONE_CARD.get()
+                || stack.getItem() == ModItems.SILVER_CARD.get()
+                || stack.getItem() == ModItems.STEEL_CARD.get()
+                || stack.getItem() == ModItems.TIN_CARD.get()
+                || stack.getItem() == ModItems.URANIUM_CARD.get()
+                || stack.getItem() == ModItems.ZINC_CARD.get()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        }
     };
 
     private LazyOptional<IItemHandler> lazyItemHandler = LazyOptional.empty();
@@ -140,6 +192,7 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
     }
 
     public static void tick(Level pLevel, BlockPos pPos, BlockState pState, SimulatorBlockBlockEntity pBlockEntity) {
+
         if(hasRecipe(pBlockEntity)) {
             if (pBlockEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.SPEED_UPGRADE.get()) {
                 pBlockEntity.speed = pBlockEntity.itemHandler.getStackInSlot(1).getCount() * 2;
@@ -170,7 +223,9 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
 
         Optional<SimulatorBlockRecipe> match = level.getRecipeManager().getRecipeFor(SimulatorBlockRecipe.Type.INSTANCE, inventory, level);
 
-        return match.isPresent() && canInsertAmountIntoOutputSlot(inventory) && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem());
+        return match.isPresent()
+                && canInsertAmountIntoOutputSlot(inventory)
+                && canInsertItemIntoOutputSlot(inventory, match.get().getResultItem());
     }
 
     private static void craftItem(SimulatorBlockBlockEntity entity) {
