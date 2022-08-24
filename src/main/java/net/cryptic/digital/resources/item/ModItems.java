@@ -85,7 +85,7 @@ public class ModItems {
             () -> new EmptyUpgradeItem(new Item.Properties().tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> SPEED_UPGRADE = ITEMS.register("speed_upgrade",
-            () -> new SpeedUpgradeItem(new Item.Properties().stacksTo(8).tab(ModCreativeModeTab.DIGITAL_TAB)));
+            () -> new SpeedUpgradeItem(new Item.Properties().stacksTo(32).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> QUANTITY_UPGRADE = ITEMS.register("quantity_upgrade",
             () -> new QuantityUpgradeItem(new Item.Properties().stacksTo(8).tab(ModCreativeModeTab.DIGITAL_TAB)));

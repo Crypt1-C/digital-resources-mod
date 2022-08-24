@@ -19,7 +19,7 @@
       "item": "minecraft:shulker_shell"
     },
     "M": {
-      "item": "minecraft:phantom_membrane"
+      "tag": "forge:dusts/redstone"
     }
   },
   "result": {

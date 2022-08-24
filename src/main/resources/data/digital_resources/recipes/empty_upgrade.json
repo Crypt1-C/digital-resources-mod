@@ -13,7 +13,7 @@
       "tag": "forge:ingots/netherite"
     },
     "M": {
-      "item": "minecraft:phantom_membrane"
+      "item": "forge:dusts/redstone"
     }
   },
   "result": {

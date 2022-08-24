@@ -145,6 +145,8 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
                 pBlockEntity.speed = pBlockEntity.itemHandler.getStackInSlot(1).getCount() * 2;
             } else if(pBlockEntity.itemHandler.getStackInSlot(3).getItem() == ModItems.SPEED_UPGRADE.get()) {
                 pBlockEntity.speed = pBlockEntity.itemHandler.getStackInSlot(3).getCount() * 2;
+            }else if (pBlockEntity.itemHandler.getStackInSlot(1).getItem() == ModItems.SPEED_UPGRADE.get() && pBlockEntity.itemHandler.getStackInSlot(3).getItem() == ModItems.SPEED_UPGRADE.get()){
+                pBlockEntity.speed = (pBlockEntity.itemHandler.getStackInSlot(1).getCount()+pBlockEntity.itemHandler.getStackInSlot(3).getCount())*2;
             } else {
                 pBlockEntity.speed = 1;
             }
@@ -196,9 +198,22 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
                         entity.itemHandler.getStackInSlot(2).getCount() + entity.itemHandler.getStackInSlot(3).getCount() * 2));
 
                 entity.resetProgress();
-
+            //both slots are Quantity upgrades
+            } else if (entity.itemHandler.getStackInSlot(3).getItem() == ModItems.QUANTITY_UPGRADE.get() && entity.itemHandler.getStackInSlot(1).getItem() == ModItems.QUANTITY_UPGRADE.get()) {
+                // check if the 1st slot contains more upgrades then the 2nd slot
+                if (entity.itemHandler.getStackInSlot(1).getCount() >= entity.itemHandler.getStackInSlot(3).getCount()) {
+                    entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
+                            entity.itemHandler.getStackInSlot(2).getCount() +
+                                    entity.itemHandler.getStackInSlot(1).getCount() * 2));
+                    entity.resetProgress();
+                } else {
+                    entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
+                            entity.itemHandler.getStackInSlot(2).getCount() +
+                                    entity.itemHandler.getStackInSlot(3).getCount() * 2));
+                    entity.resetProgress();
+                }
+            //no Quantity Upgrades - invalid upgrades
             } else {
-                //no upgrades - invalid upgrades
                 entity.itemHandler.setStackInSlot(2, new ItemStack(match.get().getResultItem().getItem(),
                         entity.itemHandler.getStackInSlot(2).getCount() + 1));
 

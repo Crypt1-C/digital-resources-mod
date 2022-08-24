@@ -27,16 +27,15 @@ displayName="Digital Resources" #mandatory
 # A URL for the "homepage" for this mod, displayed in the mod UI
 #displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
-logoFile="digital_resources.png" #optional
+logoFile= "digital_resources.png" #optional
 # A text field displayed in the mod UI
-credits="Thanks for this example mod goes to Java" #optional
+credits="Made with <3 by Cryρt1C" #optional
 # A text field displayed in the mod UI
 authors="Cryρt1C" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
-This mod adds a digital way to generate resources
+This mod adds new blocks and items to the game plus a new 'digital' way to generate resources
 
-Made with <3
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.digital_resources]] #optional
