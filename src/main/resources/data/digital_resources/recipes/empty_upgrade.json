@@ -10,7 +10,7 @@
       "tag": "forge:ingots/gold"
     },
     "I": {
-      "tag": "forge:ingots/netherite"
+      "item": "minecraft:netherite_ingot"
     },
     "M": {
       "item": "forge:dusts/redstone"

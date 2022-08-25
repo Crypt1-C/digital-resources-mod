@@ -63,7 +63,7 @@ public class SimulatorBlockBlockEntity extends BlockEntity implements MenuProvid
                 if (stack.getItem() == ModItems.ALUMINUM_CARD.get()
                 || stack.getItem() == ModItems.AMETHYST_CARD.get()
                 || stack.getItem() == ModItems.AMETHYST_CARD.get()
-                || stack.getItem() == ModItems.ANDESITE_ALLOY_CARD.get()
+                //|| stack.getItem() == ModItems.ANDESITE_ALLOY_CARD.get()
                 || stack.getItem() == ModItems.BRASS_CARD.get()
                 || stack.getItem() == ModItems.BRONZE_CARD.get()
                 || stack.getItem() == ModItems.CHORUS_CARD.get()

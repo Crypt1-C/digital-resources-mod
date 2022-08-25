@@ -19,7 +19,7 @@ public class ModItems {
 
     public static final RegistryObject<Item> AMETHYST_CARD = ITEMS.register("amethyst_card", () -> new AmethystCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
-    public static final RegistryObject<Item> ANDESITE_ALLOY_CARD = ITEMS.register("andesite_alloy_card", () -> new AndesiteAlloyCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
+    //public static final RegistryObject<Item> ANDESITE_ALLOY_CARD = ITEMS.register("andesite_alloy_card", () -> new AndesiteAlloyCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
     public static final RegistryObject<Item> BRASS_CARD = ITEMS.register("brass_card", () -> new BrassCardItem(new Item.Properties().stacksTo(1).tab(ModCreativeModeTab.DIGITAL_TAB)));
 
